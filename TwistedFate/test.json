@@ -1,0 +1,50 @@
+[
+    {
+        "leagueId": "85b85ee3-74bf-4f9f-939d-fe61d699a699",
+        "queueType": "RANKED_FLEX_SR",
+        "tier": "GOLD",
+        "rank": "I",
+        "summonerId": "PM4j6EdFBN1oGr1eIMWsfAtk5VzQQoG69Jc9vsBWl1MgDnE",
+        "summonerName": "Joints Smoker",
+        "leaguePoints": 100,
+        "wins": 21,
+        "losses": 21,
+        "veteran": false,
+        "inactive": false,
+        "freshBlood": false,
+        "hotStreak": false,
+        "miniSeries": {
+            "target": 3,
+            "wins": 1,
+            "losses": 2,
+            "progress": "WLLNN"
+        }
+    },
+    {
+        "leagueId": "bd95e43b-d5d6-4d26-9fc3-a8cf60dcf033",
+        "queueType": "RANKED_SOLO_5x5",
+        "tier": "PLATINUM",
+        "rank": "IV",
+        "summonerId": "PM4j6EdFBN1oGr1eIMWsfAtk5VzQQoG69Jc9vsBWl1MgDnE",
+        "summonerName": "Joints Smoker",
+        "leaguePoints": 55,
+        "wins": 59,
+        "losses": 56,
+        "veteran": false,
+        "inactive": false,
+        "freshBlood": false,
+        "hotStreak": false
+    },
+    {
+        "queueType": "RANKED_TFT_PAIRS",
+        "summonerId": "PM4j6EdFBN1oGr1eIMWsfAtk5VzQQoG69Jc9vsBWl1MgDnE",
+        "summonerName": "Ibuprom",
+        "leaguePoints": 0,
+        "wins": 1,
+        "losses": 13,
+        "veteran": false,
+        "inactive": false,
+        "freshBlood": false,
+        "hotStreak": false
+    }
+]
