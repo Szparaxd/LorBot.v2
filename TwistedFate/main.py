@@ -1,6 +1,6 @@
 import requests
 import json
-import const
+from . import const
 
 def jsonWrite():
     json_object = json.dumps(dict)
@@ -23,7 +23,7 @@ def jsonEdit(fileName, key, value):
 
 #jsonEdit("config.json", "summonerNames", ["UPO Loruś","Szparaxd","Zorin"])
 
-config = jsonRead("config.json")
+config = jsonRead("TwistedFate\config.json")
 key = config['key']
 header = {"X-Riot-Token":key}
 print(key)
@@ -104,15 +104,17 @@ def getLeague(summoner: Summoner):
 
     summoner.updateRank(req.json())
 
-summoners = []
-for name in config['summonerNames']:
-    summoners.append(Summoner(getSummoner(name))) 
+def xd():
+    summoners = []
+    for name in config['summonerNames']:
+        summoners.append(Summoner(getSummoner(name))) 
 
-for sum in summoners:
-    getLeague(sum)
-    #print(f'{sum} {sum.rankToString()}' )
+    for sum in summoners:
+        getLeague(sum)
+        #print(f'{sum} {sum.rankToString()}' )
 
 
-summonersSorted = sorted(summoners, key=lambda x: x.ranking['RANKED_SOLO_5x5'],reverse=True  )
-for summoner in summonersSorted:
-    print(f'{summoner} {summoner.rankToString()}' )
+    summonersSorted = sorted(summoners, key=lambda x: x.ranking['RANKED_SOLO_5x5'],reverse=True  )
+    for summoner in summonersSorted:
+        print(f'{summoner} {summoner.rankToString()}' )
+    pass
