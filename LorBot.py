@@ -13,5 +13,6 @@ async def on_ready():
 bot.load_extension("somecommands")
 bot.load_extension("lastVersionCommands")
 bot.load_extension("twistedFateDiscord")
+#bot.load_extension('testcommands')
 
-bot.run('ODU0MzA5MjkyMDcyNTAxMjc5.YMiDhw.WShdj-i3DqsWH4d8c31GTHkzV1c')
+bot.run('ODU0MzA5MjkyMDcyNTAxMjc5.YMiDhw._y1r5lxMuZ4eXR-pSyV5xroLLdo')

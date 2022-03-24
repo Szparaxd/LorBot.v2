@@ -1,4 +1,3 @@
-
 TIER = {
     "UNRANKED" : 0,
     "IRON" : 10,
