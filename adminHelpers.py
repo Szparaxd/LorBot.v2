@@ -1,4 +1,10 @@
 import json
+import coloredlogs
+import logging
+
+logger = logging.getLogger(__name__)
+coloredlogs.install(fmt='%(asctime)s, %(name)s %(levelname)s %(message)s',level='DEBUG', logger=logger)
+
 
 def addUserToJson(id, userName, discordName):
     with open('assets/tfConfig.json', 'r') as fp:

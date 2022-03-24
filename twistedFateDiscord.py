@@ -2,9 +2,10 @@ import discord
 import json
 
 from discord.ext import commands
+from datetime import datetime
 
 #----- Me liblary --------
-from adminHelpers import addUserToJson
+from adminHelpers import addUserToJson, logger
 from TwistedFate import main
 
 
@@ -33,7 +34,7 @@ class TwistedFateDiscord(commands.Cog):
 
     @commands.command(name='tfRank')
     async def tfRank(self, ctx: commands.context):
-        
+        logger.debug('rfRank')
         with open('assets/tfConfig.json','r') as f:
             obj_list = json.load(f)
 
@@ -42,7 +43,16 @@ class TwistedFateDiscord(commands.Cog):
         for i in range(len(obj_list)):
             sumIds.append(obj_list[i]['SumId'])
         
-        main.xd(sumIds)
-        await ctx.send('Poszło?')
+        test = main.xd(sumIds)
+
+        txt = ''
+        for idx,val in enumerate(test):
+            txt += str(idx+1) + '. ' + val + '\n'
+
+        logger.debug(txt)
+
+        embed = discord.Embed(title='Ranking Discordowy lola',description=txt, colour=0x87CEEB, timestamp=datetime.utcnow())
+
+        await ctx.send(embed=embed)
 
     

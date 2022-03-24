@@ -1,3 +1,20 @@
+TIER = {
+    "UNRANKED" : 0,
+    "IRON" : 10,
+    "BRONZE" : 20,
+    "SILVER" : 30,
+    "GOLD" : 40,
+    "PLATINUM" : 50,
+    "DIAMOND" : 60,
+}
+
+DIVISION = {
+    "IV" : 1,
+    "III" : 2,
+    "II" : 3,
+    "I" : 4
+}
+
 class Summoner:
 
     def __init__(self, summonerData):
@@ -28,12 +45,12 @@ class Summoner:
 
         DivStr = ""
         tierStr = ""
-        for i in const.TIER:
-            if const.TIER[i] == Div:
+        for i in TIER:
+            if TIER[i] == Div:
                 DivStr = i
 
-        for i in const.DIVISION:
-            if const.DIVISION[i] == tier:
+        for i in DIVISION:
+            if DIVISION[i] == tier:
                 tierStr = i
 
         return(DivStr + " " + tierStr)
@@ -53,8 +70,8 @@ class Summoner:
     def rankConvert(self,_tier,_division):
         
         if _tier and _division:
-            tierNo = int(const.TIER[_tier])
-            divNo = int(const.DIVISION[_division])
+            tierNo = int(TIER[_tier])
+            divNo = int(DIVISION[_division])
             return tierNo+divNo
         else:
             return 0
