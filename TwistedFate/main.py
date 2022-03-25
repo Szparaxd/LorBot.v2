@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 coloredlogs.install(fmt='%(asctime)s, %(name)s %(levelname)s %(message)s',level='DEBUG', logger=logger)
 
 
-key = 'RGAPI-d9ad148e-286a-4773-b2bd-e1a8918daea5'
+key = 'TOKEN'
 header = {"X-Riot-Token":key}
 # print(key)
 
