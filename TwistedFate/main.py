@@ -37,27 +37,27 @@ def getLeague(summoner: Summoner):
     req = requests.get(url,headers=header)
     summoner.updateRank(req.json())
 
-def xd(summonerIdList):
+
+def summonersSorted(summonerIdList, quene='solo'):
+    logger.info('summonersSorted')
     summoners = []
 
     for sum in summonerIdList:
         obj = Summoner(getSummonerId(sum))
         summoners.append(obj)
-    
-    logger.debug(summoners)
-    
-    for sum in summoners:
-        getLeague(sum)
-        #print(f'{sum} {sum.rankToString()}' )
+        getLeague(obj)
 
-    summonersSorted = sorted(summoners, key=lambda x: x.ranking['RANKED_SOLO_5x5'],reverse=True  )
-    
     resultList = []
-    
-    for summoner in summonersSorted:
-        resultList.append(f'{summoner} {summoner.rankToString()}' )
-    
-    return resultList
 
-
-print('XD')
+    match quene:
+        case 'solo':
+            summonersSorted = sorted(summoners, key=lambda x: x.ranking['RANKED_SOLO_5x5'],reverse=True)
+            for summoner in summonersSorted:
+                resultList.append(f'{summoner} {summoner.rankToString()}' )
+            return resultList
+            
+        case 'flex':
+            summonersSorted = sorted(summoners, key=lambda x: x.ranking['RANKED_FLEX_SR'],reverse=True)
+            for summoner in summonersSorted:
+                resultList.append(f'{summoner} {summoner.rankToString("RANKED_FLEX_SR")}' )
+            return resultList

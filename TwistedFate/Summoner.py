@@ -37,8 +37,8 @@ class Summoner:
     def __lt__(self,other):
         return self.ranking['RANKED_SOLO_5x5'] < other.ranking['RANKED_SOLO_5x5']
     
-    def rankToString(self):
-        NoRank = int(self.ranking['RANKED_SOLO_5x5'])
+    def rankToString(self, quene='RANKED_SOLO_5x5'):
+        NoRank = int(self.ranking[quene])
         #print(NoRank)
         Div = int(NoRank/10)*10
         tier = NoRank%10
