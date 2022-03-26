@@ -1,4 +1,3 @@
-from email.policy import default
 import discord
 import json
 
@@ -31,11 +30,11 @@ class TwistedFateDiscord(commands.Cog):
         discordName = ctx.author.name
         result = addUserToJson(id, SumId, discordName)
 
-        await ctx.send(info)
+        await ctx.send(result)
 
     @commands.command(name='tfRank')
-    async def tfRank(self, ctx: commands.context, arg):
-        
+    async def tfRank(self, ctx: commands.context, *arg):
+      
         with open('assets/tfConfig.json','r') as f:
             obj_list = json.load(f)
 
@@ -44,16 +43,16 @@ class TwistedFateDiscord(commands.Cog):
         for i in range(len(obj_list)):
             sumIds.append(obj_list[i]['SumId'])
         
-        match arg:
-            case 'flex':
-                title = 'Gorsza kolejka'
-                rank = main.summonersSorted(sumIds, 'flex')
+        if(len(arg) > 0 and arg[0] == 'flex'):
+          title = 'Gorsza kolejka'
+          rank = main.summonersSorted(sumIds, 'flex')
 
-            case _:
-                title = 'Solo'
-                rank = main.summonersSorted(sumIds)
+        else:
+          title = 'Solo'
+          rank = main.summonersSorted(sumIds)
 
         txt = ''
+        
         for idx,val in enumerate(rank):
             txt += str(idx+1) + '. ' + val + '\n'
 

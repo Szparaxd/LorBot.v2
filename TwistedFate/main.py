@@ -1,5 +1,6 @@
 import requests
 import json
+import os
 
 import coloredlogs
 import logging
@@ -12,7 +13,7 @@ logger = logging.getLogger(__name__)
 coloredlogs.install(fmt='%(asctime)s, %(name)s %(levelname)s %(message)s',level='DEBUG', logger=logger)
 
 
-key = 'TOKEN'
+key = os.getenv('RiotToken')
 header = {"X-Riot-Token":key}
 # print(key)
 
@@ -49,14 +50,13 @@ def summonersSorted(summonerIdList, quene='solo'):
 
     resultList = []
 
-    match quene:
-        case 'solo':
+    if(quene == 'solo'):
             summonersSorted = sorted(summoners, key=lambda x: x.ranking['RANKED_SOLO_5x5'],reverse=True)
             for summoner in summonersSorted:
                 resultList.append(f'{summoner} {summoner.rankToString()}' )
             return resultList
             
-        case 'flex':
+    else:
             summonersSorted = sorted(summoners, key=lambda x: x.ranking['RANKED_FLEX_SR'],reverse=True)
             for summoner in summonersSorted:
                 resultList.append(f'{summoner} {summoner.rankToString("RANKED_FLEX_SR")}' )
