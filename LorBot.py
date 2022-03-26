@@ -15,4 +15,5 @@ bot.load_extension("lastVersionCommands")
 bot.load_extension("twistedFateDiscord")
 #bot.load_extension('testcommands')
 
+#keep_alive()
 bot.run('TOKEN')
