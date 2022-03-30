@@ -9,7 +9,7 @@ from discord.ext import commands
 from adminHelpers import logger
 
 def setup(bot: commands.Bot):
-    bot.add_cog(SomeCommands(bot))
+    bot.add_cog(RedditAPI(bot))
 
 def getHeaders():
     with open('assets/passwd.json', 'r') as f:
