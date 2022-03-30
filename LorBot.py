@@ -16,6 +16,7 @@ async def on_ready():
 bot.load_extension("somecommands")
 bot.load_extension("lastVersionCommands")
 bot.load_extension("twistedFateDiscord")
+bot.load_extension('redditAPI')
 #bot.load_extension('testcommands')
 
 keep_alive()
