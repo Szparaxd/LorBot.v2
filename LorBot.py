@@ -20,4 +20,6 @@ bot.load_extension('redditAPI')
 #bot.load_extension('testcommands')
 
 keep_alive()
+print('#############')
+print(os.getenv('TOKEN'))
 bot.run(os.getenv('TOKEN'))

@@ -5,6 +5,7 @@ import json
 import re
 import random
 
+from datetime import datetime
 from discord.ext import commands
 from adminHelpers import logger
 
@@ -73,30 +74,37 @@ class RedditAPI(commands.Cog):
     @commands.command(name='r')
     async def r(self, ctx: commands.context, arg):
 
-        embed = discord.Embed(title='Random reddit',colour=0x87CEEB,timestamp=datetime.utcnow())
+        embed = discord.Embed(title='Random reddit' + '-'+arg, colour=0x87CEEB,timestamp=datetime.utcnow())
 
         if not arg:
            await ctx.send('Nie podałeś czego szukać ¯\_(ツ)_/¯')
+           return
 
         headers = getHeaders()
         res = requests.get('https://oauth.reddit.com/r/'+ arg +'/hot', headers=headers)
 
-        if response.status_code == 404:
+        logger.debug(res.status_code)
+        if res.status_code == 404:
             await ctx.send('Prawdopodobnie nie ma takiego tagu')
-
-        data =  response.json()['data']['children']
+            return
+        elif(not res.json()['data']):
+            await ctx.send('Prawdopodobnie nie ma takiego tagu')
+            return
+      
+        data =  res.json()['data']['children']
 
         result = []
         for i in data:
             result.append(i['data']['url'])
 
-        reg = re.compile(".*i.imgur.*")
+        reg = re.compile(".*\.(jpg|png|txt)")
         filter_list = list(filter(reg.match, result))
         if(len(filter_list) < 1):
             await ctx.send('Niestety nic nie znalazłem :c')
+            return
 
         img_url = random.choice(filter_list)
-        embed.description = img_url
+        embed.set_image(url=img_url)
 
         await ctx.send(embed=embed)
 
